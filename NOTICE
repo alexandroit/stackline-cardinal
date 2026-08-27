@@ -1,0 +1,11 @@
+@stackline/cardinal is an independent maintained continuation of cardinal.
+
+It is not affiliated with or endorsed by the original author. Original
+copyright and MIT license terms are preserved in LICENSE.
+
+Original project: https://github.com/thlorenz/cardinal
+
+The package preserves the dependency keys ansicolors and redeyed through npm
+aliases to maintained Stackline packages. Browser bundles include code from
+those projects and Esprima 4.0.1. Their redistribution terms are preserved in
+THIRD_PARTY_LICENSES.md.

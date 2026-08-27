@@ -1,131 +1,173 @@
-# cardinal [![Build Status](https://secure.travis-ci.org/thlorenz/cardinal.svg)](http://travis-ci.org/thlorenz/cardinal)
+# @stackline/cardinal
 
-<a href="https://www.patreon.com/bePatron?u=8663953"><img alt="become a patron" src="https://c5.patreon.com/external/logo/become_a_patron_button.png" height="35px"></a>
+> Compatible JavaScript and JSON syntax highlighting for terminals, with
+> reliable streams, named themes, ESM, browser bundles, and first-party types.
 
-[![NPM](https://nodei.co/npm/cardinal.png?downloads=true&stars=true)](https://nodei.co/npm/cardinal/)
+[![npm version](https://img.shields.io/npm/v/@stackline/cardinal.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/cardinal)
+[![npm downloads](https://img.shields.io/npm/dm/@stackline/cardinal.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/cardinal)
+[![CI](https://img.shields.io/github/actions/workflow/status/alexandroit/stackline-cardinal/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/alexandroit/stackline-cardinal/actions/workflows/ci.yml)
+[![license](https://img.shields.io/npm/l/@stackline/cardinal.svg?style=flat-square)](LICENSE)
 
-**car·di·nal** *(kärdn-l, kärdnl)* - crested thick-billed North American finch having bright red plumage in the male.
+**[Documentation and playground](https://alexandro.net/docs/vanilla/cardinal/)** |
+**[npm](https://www.npmjs.com/package/@stackline/cardinal)** |
+**[GitHub](https://github.com/alexandroit/stackline-cardinal)** |
+**[Migration](MIGRATION.md)** |
+**[Security](SECURITY.md)** |
+**[Changelog](CHANGELOG.md)**
 
-![screenshot](https://github.com/thlorenz/cardinal/raw/master/assets/screen-shot.png)
+**Current package version:** `1.0.0`
 
-## Features
+This package is an independent, maintained continuation of
+[`cardinal`](https://github.com/thlorenz/cardinal). It preserves the established
+2.1.1 library and `cdl` behavior while fixing an empty-input hang, making theme
+selection consistent, buffering piped input by logical line, and adding current
+module and type contracts.
 
-- highlights JavaScript code with ANSI colors to improve terminal output
-- theming support, see [custom color themes](https://github.com/thlorenz/cardinal/tree/master/themes)
-- optionally print line numbers
-- API and command line interface (`cdl`)
-- `.cardinalrc` config to customize settings
-- supports UNIX pipes
+## Install
 
-***
+```bash
+npm install @stackline/cardinal
+```
 
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+Keep existing `require('cardinal')` or `import cardinal from 'cardinal'` calls:
 
-- [Installation](#installation)
-  - [As library](#as-library)
-  - [As Commandline Tool](#as-commandline-tool)
-- [Commandline](#commandline)
-  - [Highlight a file](#highlight-a-file)
-  - [As part of a UNIX pipe](#as-part-of-a-unix-pipe)
-  - [Theme](#theme)
-- [API](#api)
-  - [*highlight(code[, opts])*](#highlightcode-opts)
-  - [*highlightFileSync(fullPath[, opts])*](#highlightfilesyncfullpath-opts)
-  - [*highlightFile(fullPath[, opts], callback)*](#highlightfilefullpath-opts-callback)
-  - [opts](#opts)
-- [Examples ([*browse*](https://github.com/thlorenz/cardinal/tree/master/examples))](#examples-[browse]https://githubcom/thlorenz/cardinal/tree/master/examples)
+```bash
+npm install cardinal@npm:@stackline/cardinal
+```
 
+## Quick Start
 
-## Installation
+```js
+const cardinal = require('@stackline/cardinal')
 
-### As library
+console.log(cardinal.highlight('const answer = 42'))
+```
 
-    npm install cardinal
+Line numbers and a built-in theme can be selected together:
 
-### As Commandline Tool
+```js
+const output = cardinal.highlight(source, {
+  linenos: true,
+  firstline: 20,
+  theme: 'tomorrow-night',
+  jsx: true
+})
+```
 
-    [sudo] npm install -g cardinal
+Theme objects remain fully compatible. Theme names, absolute paths, and paths
+relative to the current working directory are also accepted in Node.js.
 
-**Note:**
+## API
 
-When installed globally, cardinal exposes itself as the `cdl` command.
+### `highlight(code[, options])`
 
-## Commandline
+Returns ANSI-highlighted source. The default tokenizer and colors match
+`cardinal@2.1.1`.
 
-### Highlight a file
+| Option | Default | Purpose |
+| --- | --- | --- |
+| `theme` | `default` | Theme object, built-in name, or Node.js theme path |
+| `linenos` | `false` | Prefix output with line numbers |
+| `firstline` | `1` | Number assigned to the first output line |
+| `jsx` | `false` | Enable the historical JSX parser path |
+| `parser` | Esprima 4 | Opt in to a compatible tokenizer or parser |
+| `parserOptions` | `{}` | Pass settings to a custom parser |
 
-    cdl <file.js> [options]
+### `highlightFileSync(fullPath[, options])`
 
-**options**:
-  - `--nonum`: turns off line number printing (relevant if it is turned on inside `~/.cardinalrc`
+Reads a UTF-8 file and returns its highlighted source.
 
-### As part of a UNIX pipe
+### `highlightFile(fullPath[, options], callback)`
 
-    cat file.js | grep console | cdl
+Reads asynchronously and calls `callback(error, highlighted)`. As in the
+historical runtime, the function itself returns `undefined`.
 
-**Note:**
+## Current Syntax
 
-Not all code lines may be parsable JavaScript. In these cases the line is printed to the terminal without
-highlighting it.
+Esprima remains the default so existing token labels and ANSI output do not
+change silently. Applications that already use a newer parser can opt in:
 
-### Theme
+```bash
+npm install espree
+```
 
-The default theme will be used for highlighting.
+```js
+const espree = require('espree')
+const cardinal = require('@stackline/cardinal')
 
-To use a different theme, include a `.cardinalrc` file in your `HOME` directory.
+const output = cardinal.highlight('class Box { #value = 1_000n }', {
+  parser: espree,
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module'
+  }
+})
+```
 
-This is a JSON file of the following form:
+Parser-specific token labels remain parser-specific.
+
+## Command Line
+
+The package exposes the historical `cdl` command:
+
+```bash
+cdl source.js
+cat source.js | cdl
+```
+
+`cdl source.js --nonum` disables line numbers configured in
+`~/.cardinalrc`. Piped input is buffered by complete logical line, so stream
+chunk boundaries never insert or duplicate source text.
+
+Example `~/.cardinalrc`:
 
 ```json
 {
   "theme": "hide-semicolons",
-  "linenos": true|false
+  "linenos": true
 }
 ```
 
-- `theme` can be the name of any of the [built-in themes](https://github.com/thlorenz/cardinal/tree/master/themes) or the
-full path to a custom theme anywhere on your computer.
-- linenos toggles line number printing
+## Modules, Types, And Browser
 
-## API
+- Callable CommonJS-compatible object API
+- Native ESM default and named exports
+- First-party TypeScript declarations tested from TypeScript 3.9 through 7.0
+- Historical deep imports for `themes`, `settings`, and `lib`
+- Self-contained browser CJS, ESM, and global bundles
+- Node.js 12 and newer at runtime
 
-### *highlight(code[, opts])*
+File APIs intentionally throw a clear error in browsers. The browser build
+supports built-in names and object themes; filesystem theme paths remain a
+Node.js feature.
 
-- returns the highlighted version of the passed code ({String}) or throws an error if it was not able to parse it
-- opts (see below)
+## Compatibility Evidence
 
-### *highlightFileSync(fullPath[, opts])*
+The maintained suite includes all upstream assertions, 700 differential
+executions against `cardinal@2.1.1`, empty-input and six-digit numbering edges,
+named and path themes, adversarial stream chunking, modern parser adapters,
+CLI, CJS/ESM, browser, types, packed installs, audits, and package-quality
+checks.
 
-- returns the highlighted version of the file whose fullPath ({String}) was passed or throws an error if it was not able
-  to parse it
-- opts (see below)
+Current downstream contracts were verified in Netlify Build, Contentful
+Migration, Refine CLI, tapjs/treport, and American Express
+`json-parse-context` before implementation.
 
-### *highlightFile(fullPath[, opts], callback)*
+## Security
 
-- calls back with the highlighted version of the file whose fullPath ({String}) was passed or with an error if it was not able
-  to parse it
-- opts (see below)
-- `callback` ({Function}) has the following signature: `function (err, highlighted) { .. }`
+Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
+The empty-input fix is a reliability correction; this project does not claim a
+CVE or GHSA that has not been assigned.
 
-### opts
+## Provenance
 
-opts is an {Object} with the following properties:
+The upstream history and preserved boundary are recorded in
+[UPSTREAM_AUDIT.md](UPSTREAM_AUDIT.md),
+[COMPATIBILITY_CONTRACT.md](COMPATIBILITY_CONTRACT.md), and [NOTICE](NOTICE).
+Stackline is not affiliated with or endorsed by the upstream author.
 
-- `theme` {Object} is used to optionally override the theme used to highlight
-- `linenos` {Boolean} if `true` line numbers are included in the highlighted code
-- `firstline` {Integer} sets line number of the first line when line numbers are printed
-- `jsx` {Boolean} if `true` _JSX_ syntax is supported, otherwise cardinal will raise an error
-    when encountering _JSX_ (default: `false`)
+## License
 
-**Note** The `json` option is obsoleted and not necessary anymore as cardinal properly understands both JSON and JavaScript.
-
-## Examples ([*browse*](https://github.com/thlorenz/cardinal/tree/master/examples))
-
-- [sample .cardinalrc](https://github.com/thlorenz/cardinal/blob/master/examples/.cardinalrc)
-- [highlighting a code snippet](https://github.com/thlorenz/cardinal/blob/master/examples/highlight-string.js) via
-  ***highlight()***
-- [file that highlights itself](https://github.com/thlorenz/cardinal/blob/master/examples/highlight-self.js) via
-  ***highlightFile()*** including line numbers
-- [file that highlights itself hiding all
-  semicolons](https://github.com/thlorenz/cardinal/blob/master/examples/highlight-self-hide-semicolons.js) via
-  ***highlightFileSync()***
+MIT. The original Cardinal copyright and permission notice remain in
+[LICENSE](LICENSE). Runtime and bundled dependency notices are reproduced in
+[THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).

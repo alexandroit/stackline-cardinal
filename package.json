@@ -1,47 +1,180 @@
 {
-  "name": "cardinal",
-  "version": "2.1.1",
-  "description": "Syntax highlights JavaScript code with ANSI colors to be printed to the terminal.",
-  "main": "cardinal.js",
-  "scripts": {
-    "test": "npm run run-test && npm run lint",
-    "run-test": "tape test/*.js",
-    "lint": "standart",
-    "lint-fix": "standart --fix",
-    "demo": "node examples/highlight-string.js; node examples/highlight-self; node examples/highlight-self-hide-semicolons;"
+  "name": "@stackline/cardinal",
+  "version": "1.0.0",
+  "description": "Compatible JavaScript and JSON terminal highlighting with reliable streams, themes, ESM, and types",
+  "type": "commonjs",
+  "main": "./cardinal.js",
+  "module": "./index.mjs",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./index.d.mts",
+        "require": "./index.d.cts",
+        "default": "./index.d.ts"
+      },
+      "browser": {
+        "import": "./dist/cardinal.browser.mjs",
+        "require": "./dist/cardinal.browser.cjs"
+      },
+      "import": "./index.mjs",
+      "require": "./cardinal.js",
+      "default": "./cardinal.js"
+    },
+    "./cardinal": {
+      "types": {
+        "import": "./index.d.mts",
+        "require": "./index.d.cts",
+        "default": "./index.d.ts"
+      },
+      "import": "./index.mjs",
+      "require": "./cardinal.js",
+      "default": "./cardinal.js"
+    },
+    "./cardinal.js": {
+      "types": {
+        "import": "./index.d.mts",
+        "require": "./index.d.cts",
+        "default": "./index.d.ts"
+      },
+      "import": "./index.mjs",
+      "require": "./cardinal.js",
+      "default": "./cardinal.js"
+    },
+    "./settings": {
+      "types": {
+        "import": "./settings.d.mts",
+        "require": "./settings.d.cts",
+        "default": "./settings.d.ts"
+      },
+      "import": "./settings.mjs",
+      "require": "./settings.js",
+      "default": "./settings.js"
+    },
+    "./settings.js": {
+      "types": {
+        "import": "./settings.d.mts",
+        "require": "./settings.d.cts",
+        "default": "./settings.d.ts"
+      },
+      "import": "./settings.mjs",
+      "require": "./settings.js",
+      "default": "./settings.js"
+    },
+    "./themes/*.js": {
+      "types": "./themes/index.d.ts",
+      "default": "./themes/*.js"
+    },
+    "./themes/*": {
+      "types": "./themes/index.d.ts",
+      "default": "./themes/*.js"
+    },
+    "./lib/*.js": "./lib/*.js",
+    "./lib/*": "./lib/*.js",
+    "./package.json": "./package.json"
   },
+  "typesVersions": {
+    "*": {
+      "settings": ["settings.d.ts"],
+      "settings.js": ["settings.d.ts"],
+      "cardinal": ["index.d.ts"],
+      "cardinal.js": ["index.d.ts"],
+      "themes/*": ["themes/index.d.ts"]
+    }
+  },
+  "unpkg": "./dist/cardinal.global.js",
+  "jsdelivr": "./dist/cardinal.global.js",
   "bin": {
     "cdl": "./bin/cdl.js"
   },
+  "sideEffects": false,
+  "files": [
+    "bin",
+    "dist",
+    "lib",
+    "themes",
+    "browser.js",
+    "cardinal.js",
+    "index.mjs",
+    "index.d.ts",
+    "index.d.cts",
+    "index.d.mts",
+    "settings.js",
+    "settings.d.ts",
+    "settings.d.cts",
+    "settings.d.mts",
+    "settings.mjs",
+    "utl.js",
+    "CHANGELOG.md",
+    "COMPATIBILITY_CONTRACT.md",
+    "LICENSE",
+    "MIGRATION.md",
+    "NOTICE",
+    "README.md",
+    "SECURITY.md",
+    "THIRD_PARTY_LICENSES.md"
+  ],
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "build": "node scripts/build.mjs",
+    "lint": "eslint cardinal.js browser.js index.mjs settings.js utl.js bin lib themes scripts test docs-site",
+    "test:upstream": "tape test/cardinal-*.js test/settings.js test/themes.js",
+    "test:regression": "tape test/regression.js test/cli.js",
+    "test:differential": "node test/differential.js",
+    "test:esm": "node test/esm.mjs",
+    "test:types": "node node_modules/typescript-3-9/bin/tsc -p test/types/tsconfig.legacy.json && node node_modules/typescript/bin/tsc -p test/types/tsconfig.commonjs.json && node node_modules/typescript/bin/tsc -p test/types/tsconfig.modern.json",
+    "test:browser": "node scripts/check-browser.mjs",
+    "test": "npm run test:upstream && npm run test:regression && npm run test:differential && npm run test:esm && npm run test:types && npm run test:browser",
+    "test:coverage": "c8 --all --include=cardinal.js --include=lib/*.js --exclude=lib/resolve-theme-browser.js --include=settings.js --check-coverage --lines 90 --functions 90 --branches 80 tape test/cardinal-*.js test/settings.js test/themes.js test/regression.js",
+    "test:smoke": "node scripts/smoke-install.mjs",
+    "test:docs": "npm run docs:build && node scripts/check-docs.mjs",
+    "check:package": "publint && attw --pack .",
+    "pack:check": "npm pack --dry-run",
+    "audit:dependencies": "npm audit --omit=dev --audit-level=low",
+    "audit:signatures": "npm audit signatures",
+    "docs:build": "npm run build && node scripts/build-docs.mjs",
+    "docs:serve": "node scripts/serve-docs.mjs",
+    "verify": "npm run clean && npm run lint && npm run build && npm test && npm run test:coverage && npm run test:smoke && npm run check:package && npm run pack:check && npm run test:docs && npm run audit:dependencies",
+    "prepack": "npm run build"
+  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/thlorenz/cardinal.git"
+    "url": "git+https://github.com/alexandroit/stackline-cardinal.git"
+  },
+  "homepage": "https://alexandro.net/docs/vanilla/cardinal/",
+  "bugs": {
+    "url": "https://github.com/alexandroit/stackline-cardinal/issues"
   },
   "keywords": [
     "syntax",
     "highlight",
-    "theme",
+    "ansi",
     "javascript",
     "json",
     "terminal",
-    "console",
-    "print",
-    "output"
+    "cli",
+    "typescript",
+    "stackline"
   ],
-  "author": "Thorsten Lorenz <thlorenz@gmx.de> (thlorenz.com)",
+  "author": "Stackline Maintainers",
+  "contributors": ["Thorsten Lorenz"],
   "license": "MIT",
+  "engines": { "node": ">=12" },
+  "publishConfig": { "access": "public" },
   "dependencies": {
-    "ansicolors": "~0.3.2",
-    "redeyed": "~2.1.0"
+    "ansicolors": "npm:@stackline/ansicolors@1.0.1",
+    "redeyed": "npm:@stackline/redeyed@1.0.1"
   },
   "devDependencies": {
-    "readdirp": "~2.1.0",
-    "standart": "~6.1.0",
-    "tape": "~4.9.0"
-  },
-  "standart": {
-    "ignore": [
-      "test/fixtures"
-    ]
+    "@arethetypeswrong/cli": "0.18.5",
+    "c8": "12.0.0",
+    "cardinal-baseline": "npm:cardinal@2.1.1",
+    "esbuild": "0.28.2",
+    "eslint": "10.9.1",
+    "espree": "11.2.0",
+    "publint": "0.3.24",
+    "tape": "5.10.2",
+    "typescript": "7.0.2",
+    "typescript-3-9": "npm:typescript@3.9.10"
   }
 }

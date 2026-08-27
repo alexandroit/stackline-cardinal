@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+'use strict'
+
 var cardinal = require('..')
 var path = require('path')
 var settings = require('../settings')
@@ -58,6 +60,7 @@ if (opt && opt.indexOf('--') === 0) {
 // UNIX pipes e.g., "cat myfile.js | grep console | cardinal
 var stdin = process.stdin
 var stdout = process.stdout
+var pending = ''
 
 // line numbers don't make sense when we are printing line by line
 opts.linenos = false
@@ -66,13 +69,22 @@ stdin.setEncoding('utf-8')
 stdin.resume()
 stdin
   .on('data', function(chunk) {
-    chunk.split('\n').forEach(function(line) {
-      try {
-        stdout.write(cardinal.highlight(line, opts) + '\n')
-      } catch (e) {
-        // line doesn't represent a valid js snippet and therefore cannot be parsed -> just print as is
-        stdout.write(line + '\n')
-      }
+    var lines = (pending + chunk).split('\n')
+    pending = lines.pop()
+    lines.forEach(function(line) {
+      printLine(line)
     })
   })
+  .on('end', function() {
+    if (pending.length) printLine(pending)
+  })
+
+function printLine(line) {
+  try {
+    stdout.write(cardinal.highlight(line, opts) + '\n')
+  } catch (e) {
+    // A filtered line may not be a complete JavaScript program.
+    stdout.write(line + '\n')
+  }
+}
 })()

@@ -1,0 +1,15 @@
+# @stackline/cardinal
+
+> Cardinal 2.1.1-compatible JavaScript and JSON terminal highlighting with reliable streams, named themes, ESM, browser bundles, and TypeScript declarations.
+
+- Package: @stackline/cardinal@{{PACKAGE_VERSION}}
+- Install: npm install @stackline/cardinal
+- Legacy alias: npm install cardinal@npm:@stackline/cardinal
+- Runtime: Node.js 12+; browser bundle for string highlighting
+- API: highlight, highlightFile, highlightFileSync
+- CLI: cdl
+- License: MIT
+- Repository: https://github.com/alexandroit/stackline-cardinal
+- npm: https://www.npmjs.com/package/@stackline/cardinal
+- Documentation: https://alexandro.net/docs/vanilla/cardinal/
+- Security: https://github.com/alexandroit/stackline-cardinal/blob/main/SECURITY.md

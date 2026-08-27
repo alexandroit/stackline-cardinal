@@ -1,7 +1,5 @@
 'use strict'
 
-/* eslint-disable no-path-concat */
-
 var test = require('tape')
 var fs = require('fs')
 var customTheme = require('./fixtures/custom')

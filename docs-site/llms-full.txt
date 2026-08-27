@@ -1,0 +1,19 @@
+# @stackline/cardinal Full Reference
+
+Version: {{PACKAGE_VERSION}}
+
+@stackline/cardinal is an independent maintained continuation of cardinal@2.1.1. It preserves highlight(code, options), highlightFile(path, options, callback), highlightFileSync(path, options), all built-in themes, .cardinalrc, and the cdl command.
+
+Install directly:
+npm install @stackline/cardinal
+
+Keep historical imports:
+npm install cardinal@npm:@stackline/cardinal
+
+Options: theme, linenos, firstline, jsx, parser, parserOptions. The default Esprima tokenizer and ANSI theme output remain unchanged. A newer compatible parser is opt-in.
+
+Corrections: empty input with line numbers terminates; line numbers support arbitrary width; theme names and Node.js paths work in the library; piped input is buffered by complete logical lines; async file types return void.
+
+Evidence: 179 upstream assertions, 23 regression assertions, 700 differential executions against the official package, 98.78% core line coverage, TypeScript 3.9 and 7.0 compilation, browser and module checks, packed installs, package analysis, and a zero-finding production dependency audit.
+
+The package uses maintained @stackline/ansicolors and @stackline/redeyed through the historical dependency keys. Original MIT and Esprima BSD-2-Clause terms are preserved.

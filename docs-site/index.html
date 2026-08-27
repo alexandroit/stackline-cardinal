@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@stackline/cardinal - JavaScript terminal highlighting</title>
+    <meta name="description" content="Highlight JavaScript and JSON for terminals with Cardinal 2.1.1 compatibility, reliable streams, named themes, ESM, browser bundles, and first-party types.">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <link rel="canonical" href="https://alexandro.net/docs/vanilla/cardinal/">
+    <link rel="alternate" type="text/plain" href="./llms.txt" title="LLM summary">
+    <link rel="alternate" type="text/plain" href="./llms-full.txt" title="Full LLM reference">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="@stackline/cardinal">
+    <meta property="og:description" content="Compatible JavaScript and JSON highlighting for terminals.">
+    <meta property="og:url" content="https://alexandro.net/docs/vanilla/cardinal/">
+    <meta property="og:image" content="https://alexandro.net/docs/vanilla/cardinal/assets/cardinal-terminal.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://alexandro.net/docs/vanilla/cardinal/assets/cardinal-terminal.png">
+    <meta name="theme-color" content="#0c655e">
+    <link rel="stylesheet" href="./styles.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"@stackline/cardinal","version":"{{PACKAGE_VERSION}}","description":"Compatible JavaScript and JSON terminal highlighting.","codeRepository":"https://github.com/alexandroit/stackline-cardinal","downloadUrl":"https://www.npmjs.com/package/@stackline/cardinal","license":"https://opensource.org/license/mit","programmingLanguage":["JavaScript","TypeScript"],"runtimePlatform":["Node.js","Web browser"],"author":{"@type":"Person","name":"Alexandro Paixao Marques","url":"https://github.com/alexandroit"}}</script>
+    <script defer src="./package.js"></script>
+    <script defer src="./analytics.js"></script>
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#playground">Skip to highlighter</a>
+    <header class="site-header">
+      <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">S</span><span>@stackline/cardinal</span></a>
+      <nav aria-label="Primary navigation"><a href="#playground">Highlighter</a><a href="#api">API</a><a href="https://github.com/alexandroit/stackline-cardinal">GitHub</a><a href="https://www.npmjs.com/package/@stackline/cardinal">npm</a></nav>
+    </header>
+    <main>
+      <section class="product-intro" aria-labelledby="page-title">
+        <div class="intro-content">
+          <p class="eyebrow">Terminal syntax highlighting</p>
+          <h1 id="page-title">@stackline/cardinal</h1>
+          <p>Preserve Cardinal's compact API and exact ANSI output while gaining reliable streams, named themes, ESM, browser builds, and first-party types.</p>
+          <div class="install-row"><code>npm install @stackline/cardinal</code><button type="button" data-copy="npm install @stackline/cardinal">Copy</button></div>
+          <div class="release-line"><span>v{{PACKAGE_VERSION}}</span><span>Node 12+</span><span>TypeScript 3.9-7.0</span><span>MIT</span></div>
+        </div>
+      </section>
+
+      <section class="tool-band" id="playground" aria-labelledby="tool-title">
+        <div class="section-inner wide">
+          <div class="section-heading"><div><p class="eyebrow dark">Production browser bundle</p><h2 id="tool-title">ANSI highlighter</h2></div><button class="icon-button" id="reset-button" type="button" title="Reset source" aria-label="Reset source">&#8635;</button></div>
+          <div class="control-bar">
+            <label><span>Theme</span><select id="theme-select"><option value="default">Default</option><option value="tomorrow-night">Tomorrow night</option><option value="hide-semicolons">Hide semicolons</option><option value="jq">JQ</option><option value="empty">No colors</option></select></label>
+            <label class="toggle-label"><input id="line-numbers" type="checkbox"><span>Line numbers</span></label>
+            <label class="number-control"><span>First line</span><input id="first-line" type="number" min="1" step="1" value="1"></label>
+            <button class="primary-button" id="highlight-button" type="button">Highlight</button>
+          </div>
+          <div class="workspace-grid">
+            <section class="editor-panel"><header><h3>JavaScript or JSON</h3><span id="source-count">0 characters</span></header><textarea id="source-input" spellcheck="false" aria-label="JavaScript or JSON source"></textarea></section>
+            <section class="editor-panel output-panel"><header><h3>Terminal preview</h3><button class="text-button" id="copy-output-button" type="button">Copy text</button></header><pre id="result-output" tabindex="0" aria-live="polite"></pre></section>
+          </div>
+          <div class="status-bar" role="status" aria-live="polite"><span class="status-indicator" id="status-indicator"></span><span id="status-text">Ready</span></div>
+        </div>
+      </section>
+
+      <section class="content-band"><div class="section-inner content-grid"><div><p class="eyebrow dark">Drop-in migration</p><h2>Keep the old import</h2><p>An npm alias preserves the package key and existing source while selecting the maintained implementation.</p></div><div class="code-surface"><pre><code>npm install cardinal@npm:@stackline/cardinal</code></pre><pre><code>const cardinal = require('cardinal')
+console.log(cardinal.highlight(source))</code></pre></div></div></section>
+
+      <section class="content-band muted" id="api"><div class="section-inner"><div class="section-heading"><div><p class="eyebrow dark">Public contract</p><h2>Three focused methods</h2></div><a class="inline-link" href="https://github.com/alexandroit/stackline-cardinal/blob/main/README.md#api">Full reference</a></div><div class="api-table-wrapper"><table><thead><tr><th>Method</th><th>Result</th><th>Environment</th></tr></thead><tbody><tr><td><code>highlight(code, options?)</code></td><td>ANSI-highlighted source</td><td>Node and browser</td></tr><tr><td><code>highlightFileSync(path, options?)</code></td><td>Highlighted UTF-8 file</td><td>Node</td></tr><tr><td><code>highlightFile(path, options?, callback)</code></td><td>Asynchronous callback</td><td>Node</td></tr><tr><td><code>cdl</code></td><td>File or pipe output</td><td>Terminal</td></tr></tbody></table></div></div></section>
+
+      <section class="content-band"><div class="section-inner proof-grid"><div><p class="eyebrow dark">Release evidence</p><h2>Compatibility is measured</h2></div><dl class="proof-list"><div><dt>179</dt><dd>upstream assertions</dd></div><div><dt>23</dt><dd>targeted regressions</dd></div><div><dt>700</dt><dd>differential executions</dd></div><div><dt>98.78%</dt><dd>core line coverage</dd></div></dl></div></section>
+
+      <section class="resource-band"><div class="section-inner resource-grid"><div><p class="eyebrow">Portable reference</p><h2>Readable by people and tools</h2><p>Migration, compatibility, security, licensing, and machine-readable references remain available without client rendering.</p></div><nav aria-label="Documentation resources"><a href="./llms.txt">llms.txt</a><a href="./llms-full.txt">llms-full.txt</a><a href="./guides/compatibility.md">Compatibility</a><a href="./guides/third-party-licenses.md">Licenses</a></nav></div></section>
+    </main>
+    <footer><div><strong>@stackline/cardinal</strong><span>MIT licensed. Independent and not affiliated with upstream maintainers.</span></div><nav aria-label="Footer navigation"><a href="https://alexandro.net/docs/open-source/">All packages</a><a href="./guides/migration.md">Migration</a><a href="https://github.com/alexandroit/stackline-cardinal/blob/main/SECURITY.md">Security</a></nav></footer>
+  </body>
+</html>
