@@ -3,13 +3,13 @@ schema: stackline-project-memory-v1
 package: cardinal
 upstream: https://github.com/thlorenz/cardinal
 stackline_package: "@stackline/cardinal"
-state: IMPLEMENTING
+state: PUBLISHED
 registry_scope: verdaccio-and-public-npm
-public_npm: false
-public_github: false
-docs_production: false
+public_npm: true
+public_github: true
+docs_production: true
 created: 2026-08-26
-last_updated: 2026-08-26
+last_updated: 2026-08-27
 ---
 
 # Project Memory
@@ -99,8 +99,26 @@ GO.
 
 ## Implementation Status
 
-Implementation and local release verification are complete. Publication is
-pending the immutable artifact and remote CI gates.
+Version `1.0.0` is published from one immutable artifact to Verdaccio and the
+official npm registry. The public GitHub repository, signed release assets,
+automated CI and CodeQL checks, documentation, catalog entry, and sitemap
+discovery are live.
+
+## Public Release
+
+- npm: https://www.npmjs.com/package/@stackline/cardinal/v/1.0.0
+- GitHub: https://github.com/alexandroit/stackline-cardinal
+- release: https://github.com/alexandroit/stackline-cardinal/releases/tag/stackline-v1.0.0
+- documentation: https://alexandro.net/docs/vanilla/cardinal/
+- catalog: https://alexandro.net/docs/open-source/
+- source commit and release tag target: `fee1235d224613377619d79b8c48a867234ecf5d`
+- tarball SHA-1: `537b3fea1116dc90be4dd9011bff15ef0e8137bc`
+- tarball SHA-256: `a1226b4b7c54c8789d0ebe3cb81673b39f0afd71ecaae16e63f8c0406ef1be2b`
+- tarball SHA-512: `9f59f132cf1046421a9fccac31b164e8d2798b0910aa2b0583182e767c6facaa1e4e9161b9ba19e54e66cfabf1f4578a535f60251face9ba26a7af07d920a580`
+- npm integrity: `sha512-n1nxMs8QRkIan8ysMbFk6NJ5iwkQqisFgxgudnxvrKoeTpFhuboZ5U5mz6vx9FeKU19gJR+s6bomp68H2SClgA==`
+- packed size: 120,164 bytes; unpacked size: 531,930 bytes; 40 files
+- CI: https://github.com/alexandroit/stackline-cardinal/actions/runs/33035766947
+- CodeQL: https://github.com/alexandroit/stackline-cardinal/actions/runs/33035766942
 
 ## Local Verification
 
@@ -135,4 +153,15 @@ pending the immutable artifact and remote CI gates.
 - 2026-08-26: first-party CJS/ESM types, browser artifacts, explicit package
   exports, artifact allowlist, licensing inventory, and public documentation
   completed.
-- 2026-08-26: all local release gates passed; remote publication pending.
+- 2026-08-26: all local release gates passed.
+- 2026-08-27: one `1.0.0` tarball was published to Verdaccio and official npm;
+  both registries report the same SHA-1 and integrity values.
+- 2026-08-27: direct and `cardinal@npm:@stackline/cardinal` installs from both
+  registries passed, including runtime smoke tests and a zero-finding production
+  audit.
+- 2026-08-27: GitHub `main`, release `stackline-v1.0.0`, checksums, CycloneDX
+  SBOM, CI, CodeQL, private vulnerability reporting, and repository topics were
+  verified.
+- 2026-08-27: documentation and the eleven-package catalog were deployed to
+  alexandro.net; all package routes returned HTTP 200 through Cloudflare and
+  both aggregate sitemaps exposed exactly six Cardinal URLs.
