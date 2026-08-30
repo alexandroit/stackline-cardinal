@@ -9,7 +9,7 @@ public_npm: true
 public_github: true
 docs_production: true
 created: 2026-08-26
-last_updated: 2026-08-27
+last_updated: 2026-08-30
 ---
 
 # Project Memory
@@ -100,7 +100,7 @@ GO.
 ## Implementation Status
 
 Version `1.0.1` is published from one immutable artifact to Verdaccio and the
-official npm registry. The public GitHub repository, signed release assets,
+official npm registry. The public GitHub repository, release-attested assets,
 automated CI and CodeQL checks, documentation, catalog entry, and sitemap
 discovery are live.
 
@@ -110,7 +110,7 @@ discovery are live.
 - GitHub: https://github.com/alexandroit/stackline-cardinal
 - immutable release: https://github.com/alexandroit/stackline-cardinal/releases/tag/stackline-v1.0.1
 - documentation: https://alexandro.net/docs/vanilla/cardinal/
-- catalog: https://alexandro.net/docs/open-source/
+- catalog: https://alexandro.net/
 - source commit and release tag target: `b9e8b71581b05e974f31735a1e32cb3798685e86`
 - tarball SHA-1: `4c43143c3e854a5651c16c9a51b9c25d3352bacf`
 - tarball SHA-256: `9baa184a2f6693da7a8bac855184450c78db31fc9f437646c550be7feb48f26e`
@@ -179,3 +179,15 @@ discovery are live.
   Publisher, so the accepted artifact was published with the configured
   administrator token. Production documentation and all three catalog locales
   expose version `1.0.1`.
+- 2026-08-30: the release-local adoption lane opened a focused exact-alias
+  migration at https://github.com/americanexpress/json-parse-context/pull/292.
+  Node 18 clean install, the 19-test/15-snapshot suite, lint, lockfile lint,
+  commitlint, runtime smoke, dependency-tree validation, and a zero-finding
+  production audit passed. External-fork tests await repository approval and
+  the contributor CLA is pending; no public response was sent to the bot.
+- 2026-08-30: a different-repository maintainer decision was requested at
+  https://github.com/refinedev/refine/issues/7589. It identifies both runtime
+  call sites and asks whether Refine should remove its local `cardinal.d.ts`,
+  retain the narrower shim, keep Cardinal 2.1.1, or choose another highlighter.
+  The issue makes no vulnerability claim. The one-PR/one-different-issue
+  adoption checkpoint is complete.
