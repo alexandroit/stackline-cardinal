@@ -165,3 +165,9 @@ discovery are live.
 - 2026-08-27: documentation and the eleven-package catalog were deployed to
   alexandro.net; all package routes returned HTTP 200 through Cloudflare and
   both aggregate sitemaps exposed exactly six Cardinal URLs.
+- 2026-08-30: recursive dependency governance selected a leaf-first update.
+  Version `1.0.1` preserves `ansicolors` and `redeyed` while resolving the
+  latter exactly to `@stackline/redeyed@1.0.2`; that package resolves Esprima
+  exactly to dependency-free `@stackline/esprima@1.0.0`. Release verification
+  now rejects install warnings, invalid recursive npm trees, and any
+  production or full-lockfile audit finding.

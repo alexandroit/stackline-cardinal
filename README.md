@@ -15,7 +15,7 @@
 **[Security](SECURITY.md)** |
 **[Changelog](CHANGELOG.md)**
 
-**Current package version:** `1.0.0`
+**Current package version:** `1.0.1`
 
 This package is an independent, maintained continuation of
 [`cardinal`](https://github.com/thlorenz/cardinal). It preserves the established
@@ -152,6 +152,12 @@ checks.
 Current downstream contracts were verified in Netlify Build, Contentful
 Migration, Refine CLI, tapjs/treport, and American Express
 `json-parse-context` before implementation.
+
+The historical dependency keys remain intact. `ansicolors` resolves exactly
+to `@stackline/ansicolors@1.0.1`; `redeyed` resolves exactly to
+`@stackline/redeyed@1.0.2`, which in turn resolves its parser to the
+dependency-free `@stackline/esprima@1.0.0`. Clean direct and alias installs
+report no warnings and zero audit findings across the complete runtime chain.
 
 ## Security
 

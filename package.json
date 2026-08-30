@@ -1,6 +1,6 @@
 {
   "name": "@stackline/cardinal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Compatible JavaScript and JSON terminal highlighting with reliable streams, themes, ESM, and types",
   "type": "commonjs",
   "main": "./cardinal.js",
@@ -131,10 +131,11 @@
     "check:package": "publint && attw --pack .",
     "pack:check": "npm pack --dry-run",
     "audit:dependencies": "npm audit --omit=dev --audit-level=low",
+    "audit:all": "npm audit --audit-level=low",
     "audit:signatures": "npm audit signatures",
     "docs:build": "npm run build && node scripts/build-docs.mjs",
     "docs:serve": "node scripts/serve-docs.mjs",
-    "verify": "npm run clean && npm run lint && npm run build && npm test && npm run test:coverage && npm run test:smoke && npm run check:package && npm run pack:check && npm run test:docs && npm run audit:dependencies",
+    "verify": "npm run clean && npm run lint && npm run build && npm test && npm run test:coverage && npm run test:smoke && npm run check:package && npm run pack:check && npm run test:docs && npm run audit:dependencies && npm run audit:all",
     "prepack": "npm run build"
   },
   "repository": {
@@ -163,7 +164,7 @@
   "publishConfig": { "access": "public" },
   "dependencies": {
     "ansicolors": "npm:@stackline/ansicolors@1.0.1",
-    "redeyed": "npm:@stackline/redeyed@1.0.1"
+    "redeyed": "npm:@stackline/redeyed@1.0.2"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",

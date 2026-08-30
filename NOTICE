@@ -5,7 +5,9 @@ copyright and MIT license terms are preserved in LICENSE.
 
 Original project: https://github.com/thlorenz/cardinal
 
-The package preserves the dependency keys ansicolors and redeyed through npm
-aliases to maintained Stackline packages. Browser bundles include code from
-those projects and Esprima 4.0.1. Their redistribution terms are preserved in
+The package preserves the dependency keys ansicolors and redeyed through exact
+npm aliases to maintained @stackline/ansicolors@1.0.1 and
+@stackline/redeyed@1.0.2. Redeyed resolves its Esprima-compatible parser to
+maintained @stackline/esprima@1.0.0. Browser bundles include code from those
+projects. Their redistribution terms are preserved in
 THIRD_PARTY_LICENSES.md.

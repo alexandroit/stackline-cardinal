@@ -18,6 +18,15 @@ try {
   }))
   const installed = spawnSync('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund'], { cwd: temporary, encoding: 'utf8' })
   assert.equal(installed.status, 0, installed.stderr)
+  assert.doesNotMatch(installed.stdout + installed.stderr, /npm warn|deprecated/i)
+
+  const tree = spawnSync('npm', ['ls', '--all'], { cwd: temporary, encoding: 'utf8' })
+  assert.equal(tree.status, 0, tree.stdout + tree.stderr)
+  const audit = spawnSync('npm', ['audit', '--omit=dev', '--audit-level=low'], {
+    cwd: temporary,
+    encoding: 'utf8'
+  })
+  assert.equal(audit.status, 0, audit.stdout + audit.stderr)
 
   const commonjs = spawnSync(process.execPath, ['-e', [
     "const direct = require('@stackline/cardinal');",
@@ -38,6 +47,15 @@ try {
   const manifest = JSON.parse(await readFile(path.join(temporary, 'node_modules', '@stackline', 'cardinal', 'package.json'), 'utf8'))
   assert.equal(manifest.name, '@stackline/cardinal')
   assert.deepEqual(Object.keys(manifest.dependencies).sort(), ['ansicolors', 'redeyed'])
+  assert.equal(manifest.dependencies.ansicolors, 'npm:@stackline/ansicolors@1.0.1')
+  assert.equal(manifest.dependencies.redeyed, 'npm:@stackline/redeyed@1.0.2')
+  const redeyedManifest = JSON.parse(await readFile(path.join(
+    temporary,
+    'node_modules',
+    'redeyed',
+    'package.json'
+  ), 'utf8'))
+  assert.equal(redeyedManifest.dependencies.esprima, 'npm:@stackline/esprima@1.0.0')
   await rm(tarball, { force: true })
 } finally {
   await rm(temporary, { force: true, recursive: true })

@@ -23,7 +23,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## @stackline/redeyed 1.0.1 (MIT)
+## @stackline/redeyed 1.0.2 (MIT)
 
 Copyright 2012 Thorsten Lorenz.
 All rights reserved.
@@ -46,7 +46,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## Esprima 4.0.1 (BSD-2-Clause)
+## @stackline/esprima 1.0.0 / Esprima 4.0.1 (BSD-2-Clause)
 
 Copyright JS Foundation and other contributors, https://js.foundation/
 

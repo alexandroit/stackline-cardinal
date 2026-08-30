@@ -13,3 +13,5 @@
 - npm: https://www.npmjs.com/package/@stackline/cardinal
 - Documentation: https://alexandro.net/docs/vanilla/cardinal/
 - Security: https://github.com/alexandroit/stackline-cardinal/blob/main/SECURITY.md
+
+Runtime chain: ansicolors -> @stackline/ansicolors@1.0.1; redeyed -> @stackline/redeyed@1.0.2; esprima -> @stackline/esprima@1.0.0. All aliases are exact and preserve historical dependency keys.

@@ -2,6 +2,19 @@
 
 All notable changes to `@stackline/cardinal` are documented here.
 
+## 1.0.1 - 2026-08-30
+
+### Changed
+
+- Preserve the historical `redeyed` dependency key while resolving it exactly
+  to maintained `@stackline/redeyed@1.0.2`.
+- Close the parser chain through maintained `@stackline/esprima@1.0.0`, which
+  has no runtime dependencies.
+- Require warning-free packed installs, valid dependency trees, and zero
+  production and full-lockfile audit findings.
+- Correct the npm publication workflow to address the local tarball path
+  explicitly.
+
 ## 1.0.0 - 2026-08-26
 
 ### Added

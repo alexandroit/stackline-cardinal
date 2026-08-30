@@ -16,4 +16,4 @@ Corrections: empty input with line numbers terminates; line numbers support arbi
 
 Evidence: 179 upstream assertions, 23 regression assertions, 700 differential executions against the official package, 98.78% core line coverage, TypeScript 3.9 and 7.0 compilation, browser and module checks, packed installs, package analysis, and a zero-finding production dependency audit.
 
-The package uses maintained @stackline/ansicolors and @stackline/redeyed through the historical dependency keys. Original MIT and Esprima BSD-2-Clause terms are preserved.
+The package uses exact aliases to @stackline/ansicolors@1.0.1 and @stackline/redeyed@1.0.2 through the historical dependency keys. Redeyed resolves its parser through exact @stackline/esprima@1.0.0, whose runtime graph has no dependencies. Original MIT and Esprima BSD-2-Clause terms are preserved.
