@@ -99,26 +99,26 @@ GO.
 
 ## Implementation Status
 
-Version `1.0.0` is published from one immutable artifact to Verdaccio and the
+Version `1.0.1` is published from one immutable artifact to Verdaccio and the
 official npm registry. The public GitHub repository, signed release assets,
 automated CI and CodeQL checks, documentation, catalog entry, and sitemap
 discovery are live.
 
 ## Public Release
 
-- npm: https://www.npmjs.com/package/@stackline/cardinal/v/1.0.0
+- npm: https://www.npmjs.com/package/@stackline/cardinal/v/1.0.1
 - GitHub: https://github.com/alexandroit/stackline-cardinal
-- release: https://github.com/alexandroit/stackline-cardinal/releases/tag/stackline-v1.0.0
+- immutable release: https://github.com/alexandroit/stackline-cardinal/releases/tag/stackline-v1.0.1
 - documentation: https://alexandro.net/docs/vanilla/cardinal/
 - catalog: https://alexandro.net/docs/open-source/
-- source commit and release tag target: `fee1235d224613377619d79b8c48a867234ecf5d`
-- tarball SHA-1: `537b3fea1116dc90be4dd9011bff15ef0e8137bc`
-- tarball SHA-256: `a1226b4b7c54c8789d0ebe3cb81673b39f0afd71ecaae16e63f8c0406ef1be2b`
-- tarball SHA-512: `9f59f132cf1046421a9fccac31b164e8d2798b0910aa2b0583182e767c6facaa1e4e9161b9ba19e54e66cfabf1f4578a535f60251face9ba26a7af07d920a580`
-- npm integrity: `sha512-n1nxMs8QRkIan8ysMbFk6NJ5iwkQqisFgxgudnxvrKoeTpFhuboZ5U5mz6vx9FeKU19gJR+s6bomp68H2SClgA==`
-- packed size: 120,164 bytes; unpacked size: 531,930 bytes; 40 files
-- CI: https://github.com/alexandroit/stackline-cardinal/actions/runs/33035766947
-- CodeQL: https://github.com/alexandroit/stackline-cardinal/actions/runs/33035766942
+- source commit and release tag target: `b9e8b71581b05e974f31735a1e32cb3798685e86`
+- tarball SHA-1: `4c43143c3e854a5651c16c9a51b9c25d3352bacf`
+- tarball SHA-256: `9baa184a2f6693da7a8bac855184450c78db31fc9f437646c550be7feb48f26e`
+- tarball SHA-512: `12545788ddaf0d10c15484442125a71868bbc50c3ac67188d921d2d59cbc35114fed9d9008d29f43c665bc9c6ed09e81a5030f21d0e589dd9799b24cae947a6d`
+- npm integrity: `sha512-ElRXiN2vDRDBVIREISWnGGi7xQw6xnGI2SHS1Zy8NRFP7Z2QCNKfQ8ZlvJxu0J6BpQMPIdDlid2XmbJMrpR6bQ==`
+- packed size: 121,691 bytes; unpacked size: 540,809 bytes; 40 files
+- CI: https://github.com/alexandroit/stackline-cardinal/actions/runs/33298278791
+- CodeQL: https://github.com/alexandroit/stackline-cardinal/actions/runs/33298278672
 
 ## Local Verification
 
@@ -171,3 +171,11 @@ discovery are live.
   exactly to dependency-free `@stackline/esprima@1.0.0`. Release verification
   now rejects install warnings, invalid recursive npm trees, and any
   production or full-lockfile audit finding.
+- 2026-08-30: the deterministic `1.0.1` artifact passed direct and historical
+  alias installs from Verdaccio and public npm with identical bytes, zero
+  warnings, and zero audit findings. CI and CodeQL passed; the GitHub release
+  is immutable with the exact tarball, checksum, and CycloneDX SBOM. npm OIDC
+  was rejected because this repository is not yet registered as a Trusted
+  Publisher, so the accepted artifact was published with the configured
+  administrator token. Production documentation and all three catalog locales
+  expose version `1.0.1`.
