@@ -1,6 +1,6 @@
 {
   "name": "@stackline/cardinal",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Compatible JavaScript and JSON terminal highlighting with reliable streams, themes, ESM, and types",
   "type": "commonjs",
   "main": "./cardinal.js",
@@ -75,11 +75,21 @@
   },
   "typesVersions": {
     "*": {
-      "settings": ["settings.d.ts"],
-      "settings.js": ["settings.d.ts"],
-      "cardinal": ["index.d.ts"],
-      "cardinal.js": ["index.d.ts"],
-      "themes/*": ["themes/index.d.ts"]
+      "settings": [
+        "settings.d.ts"
+      ],
+      "settings.js": [
+        "settings.d.ts"
+      ],
+      "cardinal": [
+        "index.d.ts"
+      ],
+      "cardinal.js": [
+        "index.d.ts"
+      ],
+      "themes/*": [
+        "themes/index.d.ts"
+      ]
     }
   },
   "unpkg": "./dist/cardinal.global.js",
@@ -155,13 +165,20 @@
     "terminal",
     "cli",
     "typescript",
-    "stackline"
+    "stackline",
+    "syntax-highlighting"
   ],
   "author": "Stackline Maintainers",
-  "contributors": ["Thorsten Lorenz"],
+  "contributors": [
+    "Thorsten Lorenz"
+  ],
   "license": "MIT",
-  "engines": { "node": ">=12" },
-  "publishConfig": { "access": "public" },
+  "engines": {
+    "node": ">=12"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "ansicolors": "npm:@stackline/ansicolors@1.0.1",
     "redeyed": "npm:@stackline/redeyed@1.0.2"
