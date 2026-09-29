@@ -1,6 +1,6 @@
 {
   "name": "@stackline/cardinal",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Compatible JavaScript and JSON terminal highlighting with reliable streams, themes, ESM, and types",
   "type": "commonjs",
   "main": "./cardinal.js",

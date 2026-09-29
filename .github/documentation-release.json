@@ -4,7 +4,7 @@
     {
       "name": "@stackline/cardinal",
       "path": "README.md",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "baselineVersion": "1.0.2",
       "keywords": [
         "stackline",
@@ -25,8 +25,8 @@
       "homepage": "https://alexandro.net/docs/vanilla/cardinal/",
       "baselineTarball": "https://registry.npmjs.org/@stackline/cardinal/-/cardinal-1.0.2.tgz",
       "baselineIntegrity": "sha512-nAix+FPZKOe+35spuCUhDJXVbYJhedV//WKD9prtKsjXUVkaBMKfxwY23OVIfujppvtkpcXpgUz5RK5ZKoRAzw==",
-      "expectedSha512": "e8af1a2dfa5d6b76017a8026b06093557f5268b010ce99e7347f25dfb4e3c43b269590224ea74846eee2715c33df6c5735e142fb53b0a167e890a53f28a69e8b",
-      "tag": "docs-stackline-cardinal-v1.0.3"
+      "expectedSha512": "64ae017f0a582545073c9d40cc31dbe3fffaf6e0ecce6f5212fac2f853773f58f83d4b27cfef17ab356639b6ec6b879425b94a70ce1a9552576797d422ae3e69",
+      "tag": "docs-stackline-cardinal-v1.0.4"
     }
   ]
 }
