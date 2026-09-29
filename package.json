@@ -1,6 +1,6 @@
 {
   "name": "@stackline/cardinal",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Compatible JavaScript and JSON terminal highlighting with reliable streams, themes, ESM, and types",
   "type": "commonjs",
   "main": "./cardinal.js",
@@ -157,15 +157,19 @@
     "url": "https://github.com/alexandroit/stackline-cardinal/issues"
   },
   "keywords": [
+    "stackline",
+    "npm-package",
+    "cardinal",
+    "javascript",
+    "streams",
+    "typescript",
+    "nodejs",
     "syntax",
     "highlight",
     "ansi",
-    "javascript",
     "json",
     "terminal",
     "cli",
-    "typescript",
-    "stackline",
     "syntax-highlighting"
   ],
   "author": "Stackline Maintainers",
