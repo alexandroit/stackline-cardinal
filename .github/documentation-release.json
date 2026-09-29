@@ -1,0 +1,32 @@
+{
+  "repository": "alexandroit/stackline-cardinal",
+  "packages": [
+    {
+      "name": "@stackline/cardinal",
+      "path": "README.md",
+      "version": "1.0.3",
+      "baselineVersion": "1.0.2",
+      "keywords": [
+        "stackline",
+        "npm-package",
+        "cardinal",
+        "javascript",
+        "streams",
+        "typescript",
+        "nodejs",
+        "syntax",
+        "highlight",
+        "ansi",
+        "json",
+        "terminal",
+        "cli",
+        "syntax-highlighting"
+      ],
+      "homepage": "https://alexandro.net/docs/vanilla/cardinal/",
+      "baselineTarball": "https://registry.npmjs.org/@stackline/cardinal/-/cardinal-1.0.2.tgz",
+      "baselineIntegrity": "sha512-nAix+FPZKOe+35spuCUhDJXVbYJhedV//WKD9prtKsjXUVkaBMKfxwY23OVIfujppvtkpcXpgUz5RK5ZKoRAzw==",
+      "expectedSha512": "e8af1a2dfa5d6b76017a8026b06093557f5268b010ce99e7347f25dfb4e3c43b269590224ea74846eee2715c33df6c5735e142fb53b0a167e890a53f28a69e8b",
+      "tag": "docs-stackline-cardinal-v1.0.3"
+    }
+  ]
+}
