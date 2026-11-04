@@ -5,6 +5,8 @@ import path from 'node:path'
 import { spawnSync } from 'node:child_process'
 
 const root = path.resolve(new URL('..', import.meta.url).pathname)
+const packageJson = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'))
+const expectedRedeyed = JSON.parse(await readFile(path.join(root, 'node_modules', 'redeyed', 'package.json'), 'utf8'))
 const temporary = await mkdtemp(path.join(os.tmpdir(), 'stackline-cardinal-'))
 
 try {
@@ -47,15 +49,17 @@ try {
   const manifest = JSON.parse(await readFile(path.join(temporary, 'node_modules', '@stackline', 'cardinal', 'package.json'), 'utf8'))
   assert.equal(manifest.name, '@stackline/cardinal')
   assert.deepEqual(Object.keys(manifest.dependencies).sort(), ['ansicolors', 'redeyed'])
-  assert.equal(manifest.dependencies.ansicolors, 'npm:@stackline/ansicolors@1.0.1')
-  assert.equal(manifest.dependencies.redeyed, 'npm:@stackline/redeyed@1.0.2')
+  assert.equal(manifest.version, packageJson.version)
+  assert.deepEqual(manifest.dependencies, packageJson.dependencies)
   const redeyedManifest = JSON.parse(await readFile(path.join(
     temporary,
     'node_modules',
     'redeyed',
     'package.json'
   ), 'utf8'))
-  assert.equal(redeyedManifest.dependencies.esprima, 'npm:@stackline/esprima@1.0.0')
+  assert.equal(redeyedManifest.name, '@stackline/redeyed')
+  assert.equal(redeyedManifest.version, expectedRedeyed.version)
+  assert.deepEqual(redeyedManifest.dependencies, expectedRedeyed.dependencies)
   await rm(tarball, { force: true })
 } finally {
   await rm(temporary, { force: true, recursive: true })

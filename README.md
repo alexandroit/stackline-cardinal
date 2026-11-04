@@ -10,7 +10,7 @@
 
 **[Documentation](https://alexandro.net/docs/vanilla/cardinal/)** | **[npm](https://www.npmjs.com/package/@stackline/cardinal)** | **[Issues](https://github.com/alexandroit/stackline-cardinal/issues)** | **[Repository](https://github.com/alexandroit/stackline-cardinal)**
 
-**Current package version:** `1.0.4`
+**Current package version:** `1.0.5`
 
 ---
 
@@ -41,7 +41,7 @@ Stackline is not affiliated with or endorsed by the upstream author.
 
 | Item | Value |
 | --- | --- |
-| Package | `@stackline/cardinal@1.0.4` |
+| Package | `@stackline/cardinal@1.0.5` |
 | Node.js runtime | `>=12` |
 | CommonJS / primary entry | `./cardinal.js` |
 | ES module entry | `./index.mjs` |
@@ -62,8 +62,8 @@ Migration, Refine CLI, tapjs/treport, and American Express
 `json-parse-context` before implementation.
 
 The historical dependency keys remain intact. `ansicolors` resolves exactly
-to `@stackline/ansicolors@1.0.1`; `redeyed` resolves exactly to
-`@stackline/redeyed@1.0.2`, which in turn resolves its parser to the
+to `@stackline/ansicolors@1.0.4`; `redeyed` resolves exactly to
+`@stackline/redeyed@1.0.5`, which in turn resolves its parser to the
 dependency-free `@stackline/esprima@1.0.0`. Clean direct and alias installs
 report no warnings and zero audit findings across the complete runtime chain.
 
@@ -220,7 +220,7 @@ npm ci
 npm run verify
 ```
 
-Release tooling uses Node.js 24.20.0 and npm 11.19.0. The consumer runtime contract remains the one documented above.
+Release tooling uses Node.js 24.22.2 and npm 11.19.0. The consumer runtime contract remains the one documented above.
 
 ## Consumer Smoke Test
 

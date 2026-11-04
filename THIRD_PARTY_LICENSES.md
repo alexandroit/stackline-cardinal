@@ -1,6 +1,6 @@
 # Third-Party Licenses
 
-## @stackline/ansicolors 1.0.1 (MIT)
+## @stackline/ansicolors 1.0.4 (MIT)
 
 Copyright 2013 Thorsten Lorenz.
 All rights reserved.
@@ -23,7 +23,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## @stackline/redeyed 1.0.2 (MIT)
+## @stackline/redeyed 1.0.5 (MIT)
 
 Copyright 2012 Thorsten Lorenz.
 All rights reserved.
