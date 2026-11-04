@@ -184,8 +184,8 @@
     "access": "public"
   },
   "dependencies": {
-    "ansicolors": "npm:@stackline/ansicolors@1.0.4",
-    "redeyed": "npm:@stackline/redeyed@1.0.5"
+    "ansicolors": "npm:@stackline/ansicolors@1.0.5",
+    "redeyed": "npm:@stackline/redeyed@1.0.6"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
